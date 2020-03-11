@@ -22,7 +22,7 @@ public class MainController {
     @GetMapping("/main")
     public String main(Map<String, Object> map)
     {
-        return "main";
+        return "mains";
     }
 
 }
