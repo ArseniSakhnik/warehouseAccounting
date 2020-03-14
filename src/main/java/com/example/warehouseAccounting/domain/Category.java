@@ -24,6 +24,11 @@ public class Category {
     public Category() {
     }
 
+    public Category(String categoryName)
+    {
+        this.categoryName = categoryName;
+    }
+
     public Category(String categoryName, String categoryDescription)
     {
         this.categoryName = categoryName;
