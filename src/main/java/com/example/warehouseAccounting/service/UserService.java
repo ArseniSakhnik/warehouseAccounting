@@ -14,9 +14,7 @@ import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import java.util.Collections;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @Service
 public class UserService implements UserDetailsService {
@@ -46,8 +44,7 @@ public class UserService implements UserDetailsService {
         return user;
     }
 
-    public User findUserById(Long userId)
-    {
+    public User findUserById(Long userId) {
         Optional<User> userFromDb = userRepo.findById(userId);
         return userFromDb.orElse(new User());
     }
@@ -77,15 +74,20 @@ public class UserService implements UserDetailsService {
         return false;
     }
 
+    public void editUser(User user, String username, String password, Set<Role> rolesFromUser)
+    {
+
+
+        user.setUsername(username);
+        user.setPassword(bCryptPasswordEncoder.encode(password));
+        user.setRoles(rolesFromUser);
+        userRepo.save(user);
+    }
+
     @Bean
     public BCryptPasswordEncoder passwordEncoder() {
         BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
         return bCryptPasswordEncoder;
     }
-
-//    public List<User> usergtList(Long idMin) {
-//        return em.createQuery("SELECT u FROM User u WHERE u.id > :paramId", User.class)
-//                .setParameter("paramId", idMin).getResultList();
-//    }
 
 }

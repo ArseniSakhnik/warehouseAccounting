@@ -33,6 +33,8 @@ public class Category {
     {
         this.categoryName = categoryName;
         this.categoryDescription = categoryDescription;
+        while (categoryDescription.length() < 150)
+            this.categoryDescription += " ";
     }
 
 

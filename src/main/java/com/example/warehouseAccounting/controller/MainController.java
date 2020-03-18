@@ -2,7 +2,6 @@ package com.example.warehouseAccounting.controller;
 
 import com.example.warehouseAccounting.domain.Category;
 import com.example.warehouseAccounting.domain.Product;
-import com.example.warehouseAccounting.domain.User;
 import com.example.warehouseAccounting.repos.CategoryRepo;
 import com.example.warehouseAccounting.repos.ProductRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +15,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.Map;
 import java.util.UUID;
 
 @Controller
@@ -32,21 +30,19 @@ public class MainController {
     private String uploadPath;
 
     @GetMapping("/")
-    public String mainpage(Model model, User user)
+    public String mainpage(Model model, Object o)
     {
         Iterable<Product> products = productRepo.findAll();
         if (products != null)
             model.addAttribute("products", products);
 
-        if (user == null)
-            return "mainpage";
-        else
-            return "login";
+        return "mainpage";
     }
 
     @GetMapping("/mainpage")
     public String mainpage(Model model)
     {
+
         Iterable<Product> products = productRepo.findAll();
         if (products != null)
             model.addAttribute("products", products);

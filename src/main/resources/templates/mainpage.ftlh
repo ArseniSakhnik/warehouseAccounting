@@ -1,7 +1,11 @@
 <#import "parts/common.ftlh" as C>
+<#import "parts/loginCommon.ftlh" as L>
 
 
 <@C.page>
+
+    <@L.logout/>
+
     <div>
         <form method="post" enctype="multipart/form-data">
             <br><input type="file" name="file"/></br>

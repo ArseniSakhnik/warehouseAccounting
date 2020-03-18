@@ -7,9 +7,9 @@
     </form>
 </#macro>
 
-<#--<#macro logout>-->
-<#--    <form action="/logout" method="post">-->
-<#--&lt;#&ndash;        <input type="hidden" name="_csrf" value="${_csrf.token}"/>&ndash;&gt;-->
-<#--        <input type="submit" value="Sign out"/>-->
-<#--    </form>-->
-<#--</#macro>-->
+<#macro logout>
+    <form action="/logout" method="post">
+<#--        <input type="hidden" name="_csrf" value="${_csrf.token}"/>-->
+        <input type="submit" value="Sign out"/>
+    </form>
+</#macro>
